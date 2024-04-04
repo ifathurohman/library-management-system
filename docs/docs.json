@@ -1,0 +1,151 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Library API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000"
+        }
+    ],
+    "paths": {
+        "/api/member-borrow": {
+            "post": {
+                "summary": "Submit a new loan request",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "memberId": {
+                                        "type": "string",
+                                        "description": "The ID of the member borrowing the book"
+                                    },
+                                    "bookId": {
+                                        "type": "string",
+                                        "description": "The ID of the book being borrowed"
+                                    }
+                                },
+                                "required": [
+                                    "memberId",
+                                    "bookId"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Book borrowed successfully",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "id": 1,
+                                    "memberId": "660c030d189797f16afd7a8e",
+                                    "bookId": "660c030d189797f16afd7a93",
+                                    "borrowedDate": "2024-04-01T00:00:00Z"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/member/all": {
+            "get": {
+                "summary": "List all members",
+                "responses": {
+                    "200": {
+                        "description": "List of all members",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "id": 1,
+                                        "name": "John Doe",
+                                        "email": "john@example.com",
+                                        "booksBorrowed": 2
+                                    },
+                                    {
+                                        "id": 2,
+                                        "name": "Jane Smith",
+                                        "email": "jane@example.com",
+                                        "booksBorrowed": 1
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/return": {
+            "post": {
+                "summary": "Return a borrowed book",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "memberId": {
+                                        "type": "string",
+                                        "description": "The ID of the member returning the book"
+                                    },
+                                    "bookId": {
+                                        "type": "string",
+                                        "description": "The ID of the book being returned"
+                                    }
+                                },
+                                "required": [
+                                    "memberId",
+                                    "bookId"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Book returned successfully",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "message": "Book returned successfully"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/books": {
+            "get": {
+                "summary": "Shows all existing books and quantities",
+                "responses": {
+                    "200": {
+                        "description": "List of all existing books and quantities",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "id": 1,
+                                        "title": "Book 1",
+                                        "quantity": 5
+                                    },
+                                    {
+                                        "id": 2,
+                                        "title": "Book 2",
+                                        "quantity": 3
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

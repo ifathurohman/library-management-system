@@ -1,0 +1,27 @@
+{
+  "name": "backend-test-case",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "preinstall": "npm i nodemon -g",
+    "start": "set debug=backend-test-case && nodemon ./bin/www",
+    "test": "mocha --reporter spec"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "http-errors": "~1.6.3",
+    "jade": "^0.29.0",
+    "moment": "^2.30.1",
+    "mongoose": "^8.2.3",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "chai-http": "^4.4.0",
+    "mocha": "^10.4.0",
+    "request": "^2.88.2"
+  }
+}
